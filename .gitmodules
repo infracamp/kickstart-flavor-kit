@@ -1,0 +1,3 @@
+[submodule "lib/kicker"]
+	path = lib/kicker
+	url = https://github.com/infracamp/kicker.git
