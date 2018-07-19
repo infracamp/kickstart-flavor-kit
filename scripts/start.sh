@@ -29,7 +29,7 @@ COLOR_GRAY='\e[0;30m'
 COLOR_LIGHT_GRAY='\e[0;37m'
 
 echo "Running prepare-start.sh"
-. /kickstart/scripts/prepare-start.sh
+. /kickstart/flavorkit/scripts/prepare-start.sh
 
 echo "[start.sh] Changing work dir to /opt"
 cd /opt
@@ -42,7 +42,7 @@ then
     sudo -E -s -u user kick write_config_file
 
     echo "Running kickstart standalone mode..."
-    . /flavor/flavor-start-services.sh
+    . /kickstart/flavor/flavor-start-services.sh
 
     echo "[entry.sh] + kick run"
     sudo -E -s -u user kick run
@@ -85,7 +85,7 @@ else
     sudo -E -s -u user kick write_config_file
 
     echo "Running flavor-start-services.sh";
-    . /flavor/flavor-start-services.sh
+    . /kickstart/flavor/flavor-start-services.sh
 
     echo "[entry.sh] + kick run"
     sudo -E -s -u user kick run
