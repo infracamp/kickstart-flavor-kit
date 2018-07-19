@@ -17,8 +17,8 @@ function on_error () {
 ####################################################################
 
 echo "Linking kick..."
-ln -s /kickstart/src/bin/kick /usr/bin/kick
-composer install -d /kickstart/src
+ln -s /kickstart/lib/kicker/bin/kick /usr/bin/kick
+composer install -d /kickstart/lib/kicker
 
 
 useradd -s /bin/bash --create-home user
