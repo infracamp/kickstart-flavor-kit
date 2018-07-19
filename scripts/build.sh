@@ -37,23 +37,7 @@ echo "cd /opt" >> /home/user/.bashrc
 chown user:root /opt
 
 
-
-
-if [[ ! -e /root/flavor/flavor-build.sh ]]
-then
-    echo "Error: Missing flavor-build.sh in /root/flavor/"
-    exit 1
-fi;
-
-## This file is used by start.sh - but check if it exists on build time here
-if [[ ! -e /root/flavor/flavor-build.sh ]]
-then
-    echo "Error: Missing flavor-start.sh in /root/flavor/"
-    exit 1
-fi;
-
-echo "Running: /kickstart/container/flavor-build.sh"
-. /root/flavor/flavor-build.sh
+echo "[build.sh] Finished without errors"
 
 
 
