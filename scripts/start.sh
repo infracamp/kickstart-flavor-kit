@@ -28,16 +28,21 @@ COLOR_YELLOW='\e[1;33m'
 COLOR_GRAY='\e[0;30m'
 COLOR_LIGHT_GRAY='\e[0;37m'
 
+echo "Running prepare-start.sh"
+. /kickstart/scripts/prepare-start.sh
+
 echo "[start.sh] Changing work dir to /opt"
 cd /opt
 
 if [ "$1" == "standalone" ]
 then
+
+
     echo "[entry.sh] + kick write_config_file"
     sudo -E -s -u user kick write_config_file
 
     echo "Running kickstart standalone mode..."
-    . /root/flavor/flavor-start-services.sh
+    . /flavor/flavor-start-services.sh
 
     echo "[entry.sh] + kick run"
     sudo -E -s -u user kick run
@@ -62,8 +67,6 @@ else
     echo "[entry.sh] | Dev UID....: $DEV_UID"
     echo "[entry.sh] | ProjectName: $DEV_CONTAINER_NAME"
     echo "[entry.sh] +----------------------------------------------------+"
-    echo "Running prepare-start.sh"
-    . /kickstart/container/prepare-start.sh
 
     echo "[entry.sh] + kick build"
     sudo -E -s -u user kick build
@@ -82,7 +85,7 @@ else
     sudo -E -s -u user kick write_config_file
 
     echo "Running flavor-start-services.sh";
-    . /root/flavor/flavor-start-services.sh
+    . /flavor/flavor-start-services.sh
 
     echo "[entry.sh] + kick run"
     sudo -E -s -u user kick run
