@@ -113,7 +113,7 @@ else
     echo "Running flavor-start-services.sh";
     . /kickstart/flavor/flavor-start-services.sh
 
-    if [ "$1" != "" ]
+    if [ "$1" == "" ]
     then
         echo "[start.sh] Running default action"
         echo "[start.sh] + kick run"
