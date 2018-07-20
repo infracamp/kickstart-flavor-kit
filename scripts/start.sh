@@ -28,6 +28,18 @@ COLOR_YELLOW='\e[1;33m'
 COLOR_GRAY='\e[0;30m'
 COLOR_LIGHT_GRAY='\e[0;37m'
 
+
+echo -e $COLOR_YELLOW
+echo "[start.sh] +----------------------------------------------------+"
+echo "[start.sh] | KICKSTART-CONTAINER STARTUP                        |"
+echo "[start.sh] +----------------------------------------------------+"
+echo "[start.sh] | Running start.sh inside container"
+echo "[start.sh] | Parameters.: $@"
+echo "[start.sh] | Dev UID....: $DEV_UID"
+echo "[start.sh] | ProjectName: $DEV_CONTAINER_NAME"
+echo "[start.sh] +----------------------------------------------------+"
+
+
 echo "[start.sh] + kick kick_to_env"
 envtoset=`kick kick_to_env`
 echo $envtoset
@@ -45,20 +57,22 @@ cd /opt
 
 if [ "$1" == "standalone" ]
 then
+    echo "+--------------------------------------------------------+"
+    echo "| Production / Standalone mode                           |"
+    echo "+--------------------------------------------------------+"
 
-
-    echo "[entry.sh] + kick write_config_file"
+    echo "[start.sh] + kick write_config_file"
     sudo -E -s -u user kick write_config_file
 
     echo "Running kickstart standalone mode..."
     . /kickstart/flavor/flavor-start-services.sh
 
-    echo "[entry.sh] + kick run"
+    echo "[start.sh] + kick run"
     sudo -E -s -u user kick run
 
     ## Keep the container running
     echo "Service running..."
-    echo "[entry.sh] + kick interval > /tmp/last_interval.out (interval: 1sec)"
+    echo "[start.sh] + kick interval > /tmp/last_interval.out (interval: 1sec)"
     while [ true ]
     do
         set +e
@@ -67,20 +81,14 @@ then
     done
     exit 0
 else
-    echo -e $COLOR_YELLOW
-    echo "[entry.sh] +----------------------------------------------------+"
-    echo "[entry.sh] | KICKSTART-CONTAINER STARTUP!                       |"
-    echo "[entry.sh] +----------------------------------------------------+"
-    echo "[entry.sh] | Running start.sh inside container"
-    echo "[entry.sh] | Parameters.: $@"
-    echo "[entry.sh] | Dev UID....: $DEV_UID"
-    echo "[entry.sh] | ProjectName: $DEV_CONTAINER_NAME"
-    echo "[entry.sh] +----------------------------------------------------+"
+    echo "+--------------------------------------------------------+"
+    echo "| DEVELOPMENT MODE - DEVELOPMENT MODE - DEVELOPMENT MODE |"
+    echo "+--------------------------------------------------------+"
 
-    echo "[entry.sh] + kick build"
+    echo "[start.sh] + kick build"
     sudo -E -s -u user kick build
 
-    echo "[entry.sh] + kick init"
+    echo "[start.sh] + kick init"
     sudo -E -s -u user kick init
 
     if [ "$1" == "build" ]
@@ -90,13 +98,13 @@ else
         exit 0;
     fi;
 
-    echo "[entry.sh] + kick write_config_file"
+    echo "[start.sh] + kick write_config_file"
     sudo -E -s -u user kick write_config_file
 
     echo "Running flavor-start-services.sh";
     . /kickstart/flavor/flavor-start-services.sh
 
-    echo "[entry.sh] + kick run"
+    echo "[start.sh] + kick run"
     sudo -E -s -u user kick run
 
     RUN_SHELL=1
@@ -127,7 +135,7 @@ else
     then
         sudo -E -s -u user /bin/bash
     fi;
-    echo "[entry.sh] exit; You are now leaving the container. Goodbye."
+    echo "[start.sh] exit; You are now leaving the container. Goodbye."
     exit
 
 fi;
