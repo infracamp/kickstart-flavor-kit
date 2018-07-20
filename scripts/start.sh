@@ -79,8 +79,6 @@ then
         sudo -E -s -u user kick $2
     fi;
 
-
-
     ## Keep the container running
     echo "Service running..."
     echo "[start.sh] + kick interval > /tmp/last_interval.out (interval: 1sec)"
@@ -115,27 +113,17 @@ else
     echo "Running flavor-start-services.sh";
     . /kickstart/flavor/flavor-start-services.sh
 
-    echo "[start.sh] + kick run"
-    sudo -E -s -u user kick run
-
-    RUN_SHELL=1
-    if [ "$1" == "run" ]
+    if [ "$1" != "" ]
     then
+        echo "[start.sh] Running default action"
+        echo "[start.sh] + kick run"
+        sudo -E -s -u user kick run
+        RUN_SHELL=1
+    else
+        echo "[start.sh] + skipping default action (parameter found)"
+        echo "[start.sh] + kick $1"
+        sudo -E -s -u user kick $1
         RUN_SHELL=0
-        shift 1;
-    fi;
-
-    if [ "$1" != '' ]
-    then
-        echo "[start.sh] + kick $@"
-        sudo -E -s -u user kick $@
-    fi;
-
-    echo -e $COLOR_YELLOW
-    if [ -f /opt/README.msg ]
-    then
-        echo "-------------------------- Message from README.msg -----------------------------"
-        cat /opt/README.msg
     fi;
 
     echo ""
