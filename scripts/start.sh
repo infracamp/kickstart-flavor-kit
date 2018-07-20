@@ -67,8 +67,19 @@ then
     echo "Running kickstart standalone mode..."
     . /kickstart/flavor/flavor-start-services.sh
 
-    echo "[start.sh] + kick run"
-    sudo -E -s -u user kick run
+
+    if [ "$2" <> "" ]
+    then
+        echo "[start.sh] Running default action"
+        echo "[start.sh] + kick run"
+        sudo -E -s -u user kick run
+    else
+        echo "[start.sh] + skipping default action (parameter found)"
+        echo "[start.sh] + kick $2"
+        sudo -E -s -u user kick $2
+    fi;
+
+
 
     ## Keep the container running
     echo "Service running..."
@@ -116,7 +127,7 @@ else
 
     if [ "$1" != '' ]
     then
-        echo "[entry.sh] + kick $@"
+        echo "[start.sh] + kick $@"
         sudo -E -s -u user kick $@
     fi;
 
