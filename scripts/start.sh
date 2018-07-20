@@ -28,8 +28,17 @@ COLOR_YELLOW='\e[1;33m'
 COLOR_GRAY='\e[0;30m'
 COLOR_LIGHT_GRAY='\e[0;37m'
 
-echo "Running prepare-start.sh"
+echo "[start.sh] + kick kick_to_env"
+envtoset=`kick kick_to_env`
+echo $envtoset
+export $envtoset;
+
+echo "[start.sh] Running prepare-start.sh"
 . /kickstart/flavorkit/scripts/prepare-start.sh
+
+
+echo "[start.sh] Running flavor-prepare-start.sh"
+. /kickstart/flavor/flavor-prepare-start.sh
 
 echo "[start.sh] Changing work dir to /opt"
 cd /opt

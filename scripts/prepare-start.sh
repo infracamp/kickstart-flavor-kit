@@ -11,15 +11,10 @@ function on_error () {
 }
 
 
-echo "[entry.sh] Running /kickstart/container/prepare-start.sh"
+echo "[prepare-start.sh] Running /kickstart/container/prepare-start.sh"
 echo -e $COLOR_NC
 
-echo "[entry.sh] + kick kick_to_env"
-envtoset=`kick kick_to_env`
-echo $envtoset
-export $envtoset;
-
-echo -e $COLOR_LIGHT_CYAN"[entry.sh][DEVELOPMENT MODE] Changing userid of 'user' to $DEV_UID"
+echo -e $COLOR_LIGHT_CYAN"[prepare-start.sh][DEVELOPMENT MODE] Changing userid of 'user' to $DEV_UID"
 
 usermod -u $DEV_UID user
 chown -R user /home/user
@@ -27,4 +22,6 @@ export HOME=/home/user
 
 ## @todo if DEV_MODE=0 and privileged=0 - disable root access.
 echo "user   ALL = (ALL) NOPASSWD:   ALL" >> /etc/sudoers
+
+echo "[prepare-start.sh] File executed successful."
 
