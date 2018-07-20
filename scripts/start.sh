@@ -40,6 +40,16 @@ echo "[start.sh] | ProjectName: $DEV_CONTAINER_NAME"
 echo "[start.sh] +----------------------------------------------------+"
 
 
+if [ "$1" = "debug" ] || [ "$2" = "debug" ]
+then
+    echo "[start.sh] DEBUG MODE - DEBUG MODE - DEBUG MODE"
+    env
+
+    /bin/bash
+    exit;
+fi;
+
+
 echo "[start.sh] + kick kick_to_env"
 envtoset=`kick kick_to_env`
 echo $envtoset
