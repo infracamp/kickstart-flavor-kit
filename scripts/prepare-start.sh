@@ -18,19 +18,19 @@ echo -e $COLOR_NC
 
 if [ "$FILE_USER_GITCONFIG" != "" ]
 then
-    echo $FILE_USER_GITCONFIG > /home/user/.gitconfig
+    echo "$FILE_USER_GITCONFIG" > /home/user/.gitconfig
 fi;
 
 
 mkdir /home/user/.ssh
 if [ "$FILE_USER_SSH_ID_RSA" != "" ]
 then
-    echo $FILE_USER_SSH_ID_RSA > /home/user/.ssh/id_rsa
+    echo "$FILE_USER_SSH_ID_RSA" > /home/user/.ssh/id_rsa
 fi;
 
 if [ "$ FILE_USER_SSH_ID_ED25519" != "" ]
 then
-    echo $ FILE_USER_SSH_ID_ED25519 > /home/user/.ssh/id_ed25519
+    echo "$FILE_USER_SSH_ID_ED25519" > /home/user/.ssh/id_ed25519
 fi;
 chmod -R 700 /home/user/.ssh
 
