@@ -22,7 +22,7 @@ then
 fi;
 
 
-mkdir /home/user/.ssh
+mkdir -p /home/user/.ssh
 if [ "$FILE_USER_SSH_ID_RSA" != "" ]
 then
     echo "$FILE_USER_SSH_ID_RSA" > /home/user/.ssh/id_rsa
