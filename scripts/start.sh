@@ -67,6 +67,8 @@ cd /opt
 
 if [ "$1" == "standalone" ]
 then
+    shift;
+
     echo "+--------------------------------------------------------+"
     echo "| Production / Standalone mode                           |"
     echo "+--------------------------------------------------------+"
@@ -78,15 +80,17 @@ then
     . /kickstart/flavor/flavor-start-services.sh
 
 
-    if [ "$2" == "" ]
+    if (( $# < 1 ))
     then
-        echo "[start.sh] Running default action"
+        echo "[start.sh] Running default action (no parameters found)"
         echo "[start.sh] + kick run"
         sudo -E -s -u user kick run
     else
         echo "[start.sh] + skipping default action (parameter found)"
-        echo "[start.sh] + kick $2"
-        sudo -E -s -u user kick $2
+        for cmd in $@; do
+            echo "[start.sh] + kick $cmd"
+            sudo -E -s -u user kick $cmd
+        done
     fi;
 
     ## Keep the container running
@@ -125,14 +129,16 @@ else
 
     if [ "$1" == "" ]
     then
-        echo "[start.sh] Running default action"
+        echo "[start.sh] Running default action (no parameter found)"
         echo "[start.sh] + kick run"
         sudo -E -s -u user kick run
         RUN_SHELL=1
     else
         echo "[start.sh] + skipping default action (parameter found)"
-        echo "[start.sh] + kick $1"
-        sudo -E -s -u user kick $1
+        for cmd in $@; do
+            echo "[start.sh] + kick $cmd"
+            sudo -E -s -u user kick $cmd
+        done
         RUN_SHELL=0
     fi;
 
