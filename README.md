@@ -7,7 +7,20 @@ see (http://github.com/infracamp/kickstart) for more information.
 This Repo delivers the tools used by any kickstart flavor container.
 It is included by Git submodule.
 
+## Commands
 
+There are these predefined commands you can specify as container
+argument.
+
+| Command | Description |
+|---------|-------------|
+| `debug` | Don't execute anything inside the container and provide a bash shell |
+| `build` | Build the container. Will be executed in development environment     |
+| `init`  | Triggered after `build` |
+| `run`   | Executed by default (if no other command is specified)               |
+| | **In server mode only:** |
+| `standalone` | Execute container in standalone mode (will trigger `interval` every 60 seconds |
+| `interval`   | Triggered every 60 seconds |
 
 ## Available parameters to `start.sh`
 
