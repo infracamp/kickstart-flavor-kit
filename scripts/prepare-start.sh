@@ -14,6 +14,26 @@ function on_error () {
 echo "[prepare-start.sh] Running /kickstart/container/prepare-start.sh"
 echo -e $COLOR_NC
 
+# Writing files
+
+if [ "$FILE_USER_GITCONFIG" != "" ]
+then
+    echo "$FILE_USER_GITCONFIG" > /home/user/.gitconfig
+fi;
+
+
+mkdir -p /home/user/.ssh
+if [ "$FILE_USER_SSH_ID_RSA" != "" ]
+then
+    echo "$FILE_USER_SSH_ID_RSA" > /home/user/.ssh/id_rsa
+fi;
+
+if [ "$ FILE_USER_SSH_ID_ED25519" != "" ]
+then
+    echo "$FILE_USER_SSH_ID_ED25519" > /home/user/.ssh/id_ed25519
+fi;
+chmod -R 700 /home/user/.ssh
+
 echo -e $COLOR_LIGHT_CYAN"[prepare-start.sh][DEVELOPMENT MODE] Changing userid of 'user' to $DEV_UID"
 
 usermod -u $DEV_UID user
