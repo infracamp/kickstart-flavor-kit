@@ -25,11 +25,21 @@ fi;
 mkdir -p /home/user/.ssh
 if [ "$FILE_USER_SSH_ID_RSA" != "" ]
 then
+    if [ -f /home/user/.ssh/id_rsa ]
+    then
+        echo "Cannot send /home/user/.ssh/id_rsa: File already existing."
+        exit 3
+    fi;
     echo "$FILE_USER_SSH_ID_RSA" > /home/user/.ssh/id_rsa
 fi;
 
-if [ "$ FILE_USER_SSH_ID_ED25519" != "" ]
+if [ "$FILE_USER_SSH_ID_ED25519" != "" ]
 then
+    if [ -f /home/user/.ssh/id_ed25519 ]
+    then
+        echo "Cannot send /home/user/.ssh/id_ed25519: File already existing."
+        exit 3
+    fi;
     echo "$FILE_USER_SSH_ID_ED25519" > /home/user/.ssh/id_ed25519
 fi;
 chmod -R 700 /home/user/.ssh
