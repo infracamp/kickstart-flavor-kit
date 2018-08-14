@@ -88,6 +88,11 @@ then
     else
         echo "[start.sh] + skipping default action (parameter found)"
         for cmd in $@; do
+            if [ "$cmd" == "exit" ]
+            then
+                echo "[start.sh] command 'exit' found - leaving container"
+                exit 0;
+            fi;
             echo "[start.sh] + kick $cmd"
             sudo -E -s -u user kick $cmd
         done
@@ -136,6 +141,11 @@ else
     else
         echo "[start.sh] + skipping default action (parameter found)"
         for cmd in $@; do
+            if [ "$cmd" == "exit" ]
+            then
+                echo "[start.sh] command 'exit' found - leaving container"
+                exit 0;
+            fi;
             echo "[start.sh] + kick $cmd"
             sudo -E -s -u user kick $cmd
         done
