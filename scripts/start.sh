@@ -137,6 +137,10 @@ else
         echo "[start.sh] Running default action (no parameter found)"
         echo "[start.sh] + kick run"
         sudo -E -s -u user kick run
+
+        echo "[start.sh] + kick dev (only development mode)"
+        sudo -E -s -u user kick dev
+
         RUN_SHELL=1
     else
         echo "[start.sh] + skipping default action (parameter found)"
