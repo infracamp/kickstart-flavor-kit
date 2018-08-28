@@ -35,3 +35,9 @@ Execute `command1`, then `command2` (but not `run` - if you want to execute
 `run` as well you'll have to specify it)
 
 Execute command `interval` every 60seconds.
+
+
+## Build color prompts:
+
+
+export PS1="\u@\[$(tput sgr0)\]\[\033[38;5;208m\]$DEV_CONTAINER_NAME\[$(tput sgr0)\]\[\033[38;5;8m\]:\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;21m\]\w\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;8m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
