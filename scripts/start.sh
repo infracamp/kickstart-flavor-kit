@@ -88,6 +88,12 @@ then
     else
         echo "[start.sh] + skipping default action (parameter found)"
         for cmd in $@; do
+            if [ "$cmd" == "bash" ]
+            then
+                echo "[start.sh] command 'bash' found - starting bash"
+                sudo -E -s -u user /bin/bash
+                exit 0;
+            fi;
             if [ "$cmd" == "exit" ]
             then
                 echo "[start.sh] command 'exit' found - leaving container"
