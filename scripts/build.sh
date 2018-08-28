@@ -30,8 +30,8 @@ PROMPT='export PROMPT_COMMAND='\''if [ `whoami` != "root" ] ;  then echo -ne "\e
 echo $PROMPT >> /root/.bashrc
 echo 'export PS1=""' >> /root/.bashrc
 
-echo $PROMPT >> /home/user/.bashrc
-echo 'export PS1=""' >> /home/user/.bashrc
+#echo $PROMPT >> /home/user/.bashrc
+#echo 'export PS1=""' >> /home/user/.bashrc
 echo "cd /opt" >> /home/user/.bashrc
 
 chown user:root /opt
