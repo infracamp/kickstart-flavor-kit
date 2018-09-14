@@ -69,6 +69,8 @@ if [ "$1" == "standalone" ]
 then
     shift;
 
+    echo "";
+    echo "Starting container " `date`
     echo "+--------------------------------------------------------+"
     echo "| Production / Standalone mode                           |"
     echo "+--------------------------------------------------------+"
