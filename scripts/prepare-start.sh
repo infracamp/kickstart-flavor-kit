@@ -44,7 +44,7 @@ then
 fi;
 chmod -R 700 /home/user/.ssh
 
-echo -e $COLOR_LIGHT_CYAN"[prepare-start.sh][DEVELOPMENT MODE] Changing userid of 'user' to $DEV_UID"
+echo -e $COLOR_LIGHT_CYAN"[prepare-start.sh] Changing userid of 'user' to $DEV_UID"
 
 usermod -u $DEV_UID user
 chown -R user /home/user
