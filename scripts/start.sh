@@ -106,11 +106,11 @@ then
 
     ## Keep the container running
     echo "Service running..."
-    echo "[start.sh] + kick interval > /tmp/last_interval.out (interval: 1sec)"
+    echo "[start.sh] + kick interval  (interval: 60sec)"
     while [ true ]
     do
         set +e
-        sudo -E -s -u user kick interval > /tmp/last_interval.out
+        sudo -E -s -u user kick interval
         sleep 60
     done
     exit 0
