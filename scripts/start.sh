@@ -43,12 +43,24 @@ echo "[start.sh] +----------------------------------------------------+"
 if [ "$1" = "debug" ] || [ "$2" = "debug" ]
 then
     echo "[start.sh] DEBUG MODE - DEBUG MODE - DEBUG MODE"
+    echo "env:"
     env
+    echo ""
+    echo "pwd: "
+    pwd
+    echo ""
+    echo "ls -la"
+    ls -la
+    echo ""
+    echo "running the bash"
+    echo ""
 
     /bin/bash
     exit;
 fi;
 
+echo "[start.sh] Changing work dir to /opt"
+cd /opt
 
 echo "[start.sh] + kick kick_to_env"
 envtoset=`kick kick_to_env`
