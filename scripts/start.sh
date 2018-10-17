@@ -55,20 +55,27 @@ then
     echo "ls -la /opt"
     ls -laR /opt
 
-    echo ""
-    echo "running the bash"
-    echo ""
-
-    if [ -t 1 ]
-    then
-        echo "Running bash on interactive shell...";
-        /bin/bash
-    fi;
+    echo "End of debug output. Closing container."
     exit;
 fi;
 
-echo "[start.sh] Changing work dir to /opt"
-cd /opt
+if [ "$1" = "debug-shell" ] || [ "$2" = "debug-shell" ]
+then
+    echo "[start.sh] DEBUG MODE - DEBUG MODE - DEBUG MODE"
+    echo ""
+    echo "running the bash"
+    echo ""
+    /bin/bash
+    exit;
+fi;
+
+if [ -z "$(ls -A /opt)" ];
+then
+   echo "[start.sh] WARNING! /opt is empty!"
+   echo "This normally means, your ci configuration is incorrect. Please see the manual."
+   echo "To investigate this issue, you can run ./kickstart.sh :debug-shell"
+fi
+
 
 echo "[start.sh] + kick kick_to_env"
 envtoset=`kick kick_to_env`
