@@ -50,12 +50,16 @@ then
     pwd
     echo ""
     echo "ls -la"
-    ls -la
+    ls -laR
     echo ""
     echo "running the bash"
     echo ""
 
-    /bin/bash
+    if [ -t 1 ]
+    then
+        echo "Running bash on interactive shell...";
+        /bin/bash
+    fi;
     exit;
 fi;
 
