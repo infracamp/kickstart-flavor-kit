@@ -50,7 +50,11 @@ then
     pwd
     echo ""
     echo "ls -la"
-    ls -laR
+    ls -la
+
+    echo "ls -la /opt"
+    ls -laR /opt
+
     echo ""
     echo "running the bash"
     echo ""
