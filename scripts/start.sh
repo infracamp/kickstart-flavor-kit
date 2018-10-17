@@ -73,7 +73,12 @@ if [ -z "$(ls -A /opt)" ];
 then
    echo "[start.sh] WARNING! /opt is empty!"
    echo "This normally means, your ci configuration is incorrect. Please see the manual."
-   echo "To investigate this issue, you can run ./kickstart.sh :debug-shell"
+   echo "To investigate this issue, you can run ./kickstart.sh :debug"
+   echo ""
+   echo "If this happens in gitlab-ci - builds, you should first verfiy the 'services:' section"
+   echo "contains 'docker:dind'"
+   echo ""
+   exit 10
 fi
 
 

@@ -14,7 +14,8 @@ argument.
 
 | Command | Description |
 |---------|-------------|
-| `debug` | Don't execute anything inside the container and provide a bash shell |
+| `debug` | Don't execute anything inside the container and provide information about the container |
+| `debug-shell` | Don't execute anything inside the container and provide a bash shell |
 | `build` | Build the container. Will be executed in development environment     |
 | `init`  | Triggered after `build` |
 | `run`   | Executed by default (if no other command is specified)               |
