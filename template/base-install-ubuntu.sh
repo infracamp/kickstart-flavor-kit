@@ -17,6 +17,6 @@ apt-get update
 
 # Bug in Ubuntu18.04. You have to install tzdata standalone first!
 apt-get install -y --no-install-recommends tzdata
-apt-get install -y php7.2-cli curl zip composer vim nano git curl sudo whois bash-completion pwgen
+apt-get install -y php7.2-cli curl zip composer vim nano git curl sudo whois bash-completion pwgen netcat
 
 # (whois: offers mkpasswd command)
