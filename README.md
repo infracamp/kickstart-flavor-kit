@@ -23,6 +23,22 @@ argument.
 | `standalone` | Execute container in standalone mode (will trigger `interval` every 60 seconds |
 | `interval`   | Triggered every 60 seconds |
 
+
+
+## Run sequence
+
+| Stanalone (container-mode) | Development (./kickstart.sh) |
+|----------------------------|------------------------------|
+|                            |                              |
+| --                         | `kick build`                 |
+|                            |                              |
+| `kick write_config_file`   | `kick write_config_file`     |
+| `kick init`                | `kick init`                  |
+| `kick run`                 | `kick dev`                   |
+| Loop: `kick interval`      | (bash)                       |
+
+
+
 ## Available parameters to `start.sh`
 
 ### `standalone [command1 [command2]]`: Server mode

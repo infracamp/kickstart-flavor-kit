@@ -110,6 +110,9 @@ then
     echo "[start.sh] + kick write_config_file"
     sudo -E -s -u user kick write_config_file
 
+    echo "[start.sh] + kick init"
+    sudo -E -s -u user kick init
+
     echo "Running kickstart standalone mode..."
     . /kickstart/flavor/flavor-start-services.sh
 
@@ -156,9 +159,6 @@ else
     echo "[start.sh] + kick build"
     sudo -E -s -u user kick build
 
-    echo "[start.sh] + kick init"
-    sudo -E -s -u user kick init
-
     if [ "$1" == "build" ]
     then
         echo "[BUILD MODE] Closing image after build"
@@ -169,15 +169,14 @@ else
     echo "[start.sh] + kick write_config_file"
     sudo -E -s -u user kick write_config_file
 
+    echo "[start.sh] + kick init"
+    sudo -E -s -u user kick init
+
     echo "Running flavor-start-services.sh";
     . /kickstart/flavor/flavor-start-services.sh
 
     if [ "$1" == "" ]
     then
-        echo "[start.sh] Running default action (no parameter found)"
-        echo "[start.sh] + kick run"
-        sudo -E -s -u user kick run
-
         echo "[start.sh] + kick dev (only development mode)"
         sudo -E -s -u user kick dev
 
