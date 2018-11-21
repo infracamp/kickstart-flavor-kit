@@ -7,6 +7,7 @@ PROGNAME=$(basename $0)
 
 function on_error () {
     echo "Error: ${PROGNAME} on line $1" 1>&2
+    echo "(Run './kickstart.sh :debug-shell' to investigate the error)" 1>&2
     exit 1
 }
 
