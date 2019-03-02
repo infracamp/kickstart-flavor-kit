@@ -59,13 +59,14 @@ then
     mkdir -p /mnt/.kick_cache/root/apt
     mkdir -p /mnt/.kick_cache/user/.cache
     mkdir -p /mnt/.kick_cache/user/.composer
+    mkdir -p /mnt/.kick_cache/user/.npm
     chown -R user /mnt/.kick_cache/user
 
     rm -R /var/cache/apt
     ln -s /mnt/.kick_cache/root/apt /var/cache/apt
     ln -s /mnt/.kick_cache/user/.cache /home/user/.cache
-
     ln -s /mnt/.kick_cache/user/.composer /home/user/.composer
+    ln -s /mnt/.kick_cache/user/.npm /home/user/.npm
 
     rm /etc/apt/apt.conf.d/docker-clean
 fi;
