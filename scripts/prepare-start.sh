@@ -58,11 +58,14 @@ then
     echo "Enabling apt / composer caching..."
     mkdir -p /mnt/.kick_cache/root/apt
     mkdir -p /mnt/.kick_cache/user/.cache
+    mkdir -p /mnt/.kick_cache/user/.composer
     chown -R user /mnt/.kick_cache/user
 
     rm -R /var/cache/apt
     ln -s /mnt/.kick_cache/root/apt /var/cache/apt
     ln -s /mnt/.kick_cache/user/.cache /home/user/.cache
+
+    ln -s /mnt/.kick_cache/user/.composer /home/user/.composer
 
     rm /etc/apt/apt.conf.d/docker-clean
 fi;
