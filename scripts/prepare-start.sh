@@ -46,9 +46,26 @@ chmod -R 700 /home/user/.ssh
 
 echo -e $COLOR_LIGHT_CYAN"[prepare-start.sh] Changing userid of 'user' to $DEV_UID"
 
+
+
+
 usermod -u $DEV_UID user
 chown -R user /home/user
 export HOME=/home/user
+
+if [[ "$DEV_MODE" = "1" ]]
+then
+    echo "Enabling apt / composer caching..."
+    mkdir -p /mnt/.kick_cache/root/apt
+    mkdir -p /mnt/.kick_cache/user/.cache
+    chown -R user /mnt/.kick_cache/user
+
+    rm -R /var/cache/apt
+    ln -s /mnt/.kick_cache/root/apt /var/cache/apt
+    ln -s /mnt/.kick_cache/user/.cache /home/user/.cache
+
+    rm /etc/apt/apt.conf.d/docker-clean
+fi;
 
 ## @todo if DEV_MODE=0 and privileged=0 - disable root access.
 echo "user   ALL = (ALL) NOPASSWD:   ALL" >> /etc/sudoers
