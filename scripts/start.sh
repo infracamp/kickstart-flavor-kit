@@ -86,7 +86,7 @@ fi
 echo "[start.sh] + kick kick_to_env"
 envtoset=`kick kick_to_env`
 echo "kick_to_env raw: $envtoset"
-eval envtoset_parsed="$envtoset"
+eval envtoset_parsed="\"$envtoset\""
 export $envtoset_parsed
 
 echo "[start.sh] Running prepare-start.sh"

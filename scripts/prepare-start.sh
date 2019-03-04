@@ -59,7 +59,6 @@ then
     mkdir -p /mnt/.kick_cache/root/apt
     mkdir -p /mnt/.kick_cache/user/.cache
     mkdir -p /mnt/.kick_cache/.composer/cache
-    mkdir -p /mnt/.kick_cache/user/npm_cache
     chown -R user /mnt/.kick_cache/user
 
     mkdir -p /home/user/.composer/cache
