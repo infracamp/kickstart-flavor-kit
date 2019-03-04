@@ -39,6 +39,9 @@ echo "cd /opt" >> /home/user/.bashrc
 
 chown user:root /opt
 
+## Remove secure_path (otherwise $PATH will be resetted with each sudo call)
+echo "`cat /etc/sudoers | grep -v "secure_path"`" > /etc/sudoers
+
 
 echo "[build.sh] Finished without errors"
 
