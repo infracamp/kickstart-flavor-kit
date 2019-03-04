@@ -85,8 +85,9 @@ fi
 
 echo "[start.sh] + kick kick_to_env"
 envtoset=`kick kick_to_env`
-echo $envtoset
-export eval $envtoset;
+echo "kick_to_env raw: $envtoset"
+echo "kick_to_env eval: " $(eval $envtoset)
+export $(eval $envtoset);
 
 echo "[start.sh] Running prepare-start.sh"
 . /kickstart/flavorkit/scripts/prepare-start.sh
