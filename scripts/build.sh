@@ -30,12 +30,14 @@ gpasswd -a user adm
 ##echo $PROMPT >> /root/.bashrc
 echo 'export PS1="\u@\[$(tput sgr0)\]\[\033[38;5;42m\]$DEV_CONTAINER_NAME\[$(tput sgr0)\]\[\033[38;5;8m\]:\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;21m\]\w\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;8m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"' >> /root/.bashrc
 echo '' >> /root/.bashrc
+echo 'export GIT_EDITOR=vim' >> /root/.bashrc
 
 #echo $PROMPT >> /home/user/.bashrc
 #echo 'export PS1=""' >> /home/user/.bashrc
 echo 'export PS1="\u@\[$(tput sgr0)\]\[\033[38;5;42m\]$DEV_CONTAINER_NAME\[$(tput sgr0)\]\[\033[38;5;8m\]:\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;21m\]\w\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;8m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"' >> /home/user/.bashrc
 
 echo "cd /opt" >> /home/user/.bashrc
+echo 'export GIT_EDITOR=vim' >> /home/user/.bashrc
 
 chown user:root /opt
 
