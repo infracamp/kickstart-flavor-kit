@@ -200,7 +200,6 @@ else
 
     echo ""
     echo -e $COLOR_GREEN"Container ready..."
-    echo -e $COLOR_RED"Warning: Changed behaviour: omitting 'kick run' in development mode - see handout!"
     echo -e $COLOR_NC
 
     if [ "$RUN_SHELL" == "1" ]
