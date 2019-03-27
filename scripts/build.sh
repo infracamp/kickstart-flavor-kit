@@ -48,6 +48,10 @@ echo 'export PATH="$PATH:/home/user/.composer/vendor/bin"' >> /home/user/.bashrc
 
 ## Load kick environment
 
+echo 'export LC_ALL=en_US.UTF-8' >> /home/user/.bashr
+echo 'export LANG=en_US.UTF-8' >> /home/user/.bashrc
+echo "export LANGUAGE=en_US.UTF-8" >> /home/user/.bashrc
+
 echo <<EOF >> /home/user/.bashrc
 envtoset=`kick kick_to_env`
 echo "kick_to_env raw: $envtoset"
