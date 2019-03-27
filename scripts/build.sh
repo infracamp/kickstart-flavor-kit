@@ -32,7 +32,9 @@ echo "`cat /etc/sudoers | grep -v "secure_path"`" > /etc/sudoers
 
 
 cat <<\EOF >> /home/user/.bashrc
+##
 ## Added from kickstart-flavor-kit build.sh (user-section):
+##
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
@@ -52,7 +54,9 @@ export $envtoset_parsed
 EOF
 
 cat <<\EOF >> /root/.bashrc
+##
 ## Added from kickstart-flavor-kit build.sh (root-section):
+##
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
@@ -61,10 +65,8 @@ export PATH="$PATH:/root/.composer/vendor/bin"
 
 export PS1="\u@\[$(tput sgr0)\]\[\033[38;5;42m\]$DEV_CONTAINER_NAME\[$(tput sgr0)\]\[\033[38;5;8m\]:\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;21m\]\w\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;8m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
 
-
 ## Change Dir to /opt
 cd /opt
-
 
 envtoset=`kick kick_to_env`
 echo "kick_to_env raw: $envtoset"
