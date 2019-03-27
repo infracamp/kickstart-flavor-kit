@@ -53,7 +53,7 @@ usermod -u $DEV_UID user
 chown -R user /home/user
 export HOME=/home/user
 
-if [[ "$DEV_MODE" = "1" ]]
+if [[ "$DEV_MODE" = "1"  && ! -e /var/cache/apt ]]
 then
     echo "Enabling apt / composer caching..."
     mkdir -p /mnt/.kick_cache/root/apt
