@@ -44,6 +44,17 @@ chown user:root /opt
 ## Remove secure_path (otherwise $PATH will be resetted with each sudo call)
 echo "`cat /etc/sudoers | grep -v "secure_path"`" > /etc/sudoers
 
+echo 'export PATH="$PATH:/home/user/.composer/vendor/bin"' >> /home/user/.bashrc
+
+## Load kick environment
+
+echo <<EOF >> /home/user/.bashrc
+envtoset=`kick kick_to_env`
+echo "kick_to_env raw: $envtoset"
+## Evaluate and replace $PATH in envtoset
+eval envtoset_parsed="\"$envtoset\""
+export $envtoset_parsed
+EOF
 
 echo "[build.sh] Finished without errors"
 
