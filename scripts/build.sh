@@ -56,6 +56,14 @@ eval envtoset_parsed="\"$envtoset\""
 export $envtoset_parsed
 EOF
 
+echo <<EOF >> /root/.bashrc
+envtoset=`kick kick_to_env`
+echo "kick_to_env raw: $envtoset"
+## Evaluate and replace $PATH in envtoset
+eval envtoset_parsed="\"$envtoset\""
+export $envtoset_parsed
+EOF
+
 echo "[build.sh] Finished without errors"
 
 
