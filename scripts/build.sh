@@ -47,7 +47,6 @@ export PS1="\u@\[$(tput sgr0)\]\[\033[38;5;42m\]$DEV_CONTAINER_NAME\[$(tput sgr0
 cd /opt
 
 envtoset=`kick kick_to_env`
-echo "kick_to_env raw: $envtoset"
 ## Evaluate and replace $PATH in envtoset
 eval envtoset_parsed="\"$envtoset\""
 export $envtoset_parsed
@@ -69,7 +68,6 @@ export PS1="\u@\[$(tput sgr0)\]\[\033[38;5;42m\]$DEV_CONTAINER_NAME\[$(tput sgr0
 cd /opt
 
 envtoset=`kick kick_to_env`
-echo "kick_to_env raw: $envtoset"
 ## Evaluate and replace $PATH in envtoset
 eval envtoset_parsed="\"$envtoset\""
 export $envtoset_parsed
