@@ -159,8 +159,14 @@ else
     echo "| DEVELOPMENT MODE - DEVELOPMENT MODE - DEVELOPMENT MODE |"
     echo "+--------------------------------------------------------+"
 
-    echo "[start.sh] + kick build"
-    sudo -E -s -u user kick build
+    if [ ! -f /etc/kick_build_done ]
+    then
+        echo "[start.sh] + kick build"
+        sudo -E -s -u user kick build
+        touch /etc/kick_build_done
+    else
+        echo "[start.sh][SKIP kick build]: /etc/kick_build_done exists - assuming wakeup action."
+    fi
 
     if [ "$1" == "build" ]
     then
