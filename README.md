@@ -58,3 +58,11 @@ Execute command `interval` every 60seconds.
 
 
 export PS1="\u@\[$(tput sgr0)\]\[\033[38;5;208m\]$DEV_CONTAINER_NAME\[$(tput sgr0)\]\[\033[38;5;8m\]:\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;21m\]\w\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;8m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+
+
+## Using select-console.sh
+
+```bash
+. ./select-console.sh [console]
+
+```
