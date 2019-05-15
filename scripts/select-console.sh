@@ -16,7 +16,7 @@ case "$1" in
         ;;
 
     *)
-        export PS1='\[\033[01;32m\]\[\033[0m\033[0;32m\]\[\033[01;97;44m\][\u@$DEV_CONTAINER_NAME]\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1)$ '
-        ;;
+        echo "unknown"
+        exit 1
 esac;
 
