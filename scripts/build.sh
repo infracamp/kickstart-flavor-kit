@@ -24,19 +24,54 @@ composer install -d /kickstart/flavorkit/lib/kicker
 useradd -s /bin/bash --create-home user
 # Add user to admin group
 gpasswd -a user adm
-
-# Set Color Prompt
-#PROMPT='export PROMPT_COMMAND='\''if [ `whoami` != "root" ] ;  then echo -ne "\e[0m\e[95m${DEV_TTYID}\e[0m`whoami`@\e[1;33m${DEV_CONTAINER_NAME}:\e[0m${PWD}$ "; else echo -ne "\e[101m\e[95m${DEV_TTYID}`whoami`@\e[1;33m${DEV_CONTAINER_NAME}:\e[0m${PWD}$ "; fi;'\'' '
-##echo $PROMPT >> /root/.bashrc
-echo '. /kickstart/flavorkit/scripts/select-console.sh default_root' >> /root/.bashrc
-echo '' >> /root/.bashrc
-
-
-echo '. /kickstart/flavorkit/scripts/select-console.sh default' >> /home/user/.bashrc
-echo "cd /opt" >> /home/user/.bashrc
-
-
 chown user:root /opt
+
+
+## Remove secure_path (otherwise $PATH will be resetted with each sudo call)
+echo "`cat /etc/sudoers | grep -v "secure_path"`" > /etc/sudoers
+
+
+cat <<\EOF >> /home/user/.bashrc
+##
+## Added from kickstart-flavor-kit build.sh (user-section):
+##
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+export GIT_EDITOR=vim
+export PATH="$PATH:/home/user/.composer/vendor/bin"
+
+. /kickstart/flavorkit/scripts/select-console.sh default
+
+## Change Dir to /opt
+cd /opt
+
+envtoset=`kick kick_to_env`
+## Evaluate and replace $PATH in envtoset
+eval envtoset_parsed="\"$envtoset\""
+export $envtoset_parsed
+EOF
+
+cat <<\EOF >> /root/.bashrc
+##
+## Added from kickstart-flavor-kit build.sh (root-section):
+##
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+export GIT_EDITOR=vim
+export PATH="$PATH:/root/.composer/vendor/bin"
+
+. /kickstart/flavorkit/scripts/select-console.sh default_root
+## Change Dir to /opt
+cd /opt
+
+envtoset=`kick kick_to_env`
+## Evaluate and replace $PATH in envtoset
+eval envtoset_parsed="\"$envtoset\""
+export $envtoset_parsed
+EOF
+
 
 echo "[build.sh] Finished without errors"
 

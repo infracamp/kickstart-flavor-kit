@@ -53,14 +53,12 @@ usermod -u $DEV_UID user
 chown -R user /home/user
 export HOME=/home/user
 
-if [[ "$DEV_MODE" = "1" ]]
+if [[ "$DEV_MODE" = "1"  && ! -e /var/cache/apt ]]
 then
     echo "Enabling apt / composer caching..."
     mkdir -p /mnt/.kick_cache/root/apt
-    mkdir -p /mnt/.kick_cache/root/npm_cache
     mkdir -p /mnt/.kick_cache/user/.cache
     mkdir -p /mnt/.kick_cache/.composer/cache
-    mkdir -p /mnt/.kick_cache/user/npm_cache
     chown -R user /mnt/.kick_cache/user
 
     mkdir -p /home/user/.composer/cache
@@ -71,7 +69,6 @@ then
     ln -s /mnt/.kick_cache/user/.cache /home/user/.cache
     ln -s /mnt/.kick_cache/user/.composer/cache /home/user/.composer/cache
 
-    npm config set cache /mnt/.kick_cache/root/npm_cache --global
     rm /etc/apt/apt.conf.d/docker-clean
 fi;
 

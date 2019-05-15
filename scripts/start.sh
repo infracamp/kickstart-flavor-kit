@@ -85,8 +85,10 @@ fi
 
 echo "[start.sh] + kick kick_to_env"
 envtoset=`kick kick_to_env`
-echo $envtoset
-export $envtoset;
+echo "kick_to_env raw: $envtoset"
+## Evaluate and replace $PATH in envtoset
+eval envtoset_parsed="\"$envtoset\""
+export $envtoset_parsed
 
 echo "[start.sh] Running prepare-start.sh"
 . /kickstart/flavorkit/scripts/prepare-start.sh
@@ -157,8 +159,14 @@ else
     echo "| DEVELOPMENT MODE - DEVELOPMENT MODE - DEVELOPMENT MODE |"
     echo "+--------------------------------------------------------+"
 
-    echo "[start.sh] + kick build"
-    sudo -E -s -u user kick build
+    if [ ! -f /etc/kick_build_done ]
+    then
+        echo "[start.sh] + kick build"
+        sudo -E -s -u user kick build
+        touch /etc/kick_build_done
+    else
+        echo "[start.sh][SKIP kick build]: /etc/kick_build_done exists - assuming wakeup action."
+    fi
 
     if [ "$1" == "build" ]
     then
@@ -198,7 +206,6 @@ else
 
     echo ""
     echo -e $COLOR_GREEN"Container ready..."
-    echo -e $COLOR_RED"Warning: Changed behaviour: omitting 'kick run' in development mode - see handout!"
     echo -e $COLOR_NC
 
     if [ "$RUN_SHELL" == "1" ]
