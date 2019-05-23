@@ -17,7 +17,7 @@ apt-get update
 
 # Bug in Ubuntu18.04. You have to install tzdata standalone first!
 apt-get install -y --no-install-recommends tzdata
-apt-get install -y --no-install-recommends php7.2-cli php7.2-yaml curl zip composer vim nano git curl sudo whois bash-completion pwgen netcat locales
+apt-get install -y php7.2-cli php7.2-yaml curl zip composer vim nano git curl sudo whois bash-completion pwgen netcat locales
 
 locale-gen en_US.UTF-8
 
