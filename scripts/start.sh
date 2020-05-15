@@ -82,6 +82,10 @@ then
    exit 10
 fi
 
+## The env set here will be available in all commands and shells after
+echo "[start.sh] Setting default PATH"
+PATH="/opt/bin:/home/user/.composer/vendor/bin:/opt/node_modules/.bin:$PATH"
+
 
 echo "[start.sh] + kick kick_to_env"
 envtoset=`kick kick_to_env`

@@ -46,10 +46,6 @@ export PATH="/opt/bin:/home/user/.composer/vendor/bin:/opt/node_modules/.bin:$PA
 ## Change Dir to /opt
 cd /opt
 
-envtoset=`kick kick_to_env`
-## Evaluate and replace $PATH in envtoset
-eval envtoset_parsed="\"$envtoset\""
-export $envtoset_parsed
 EOF
 
 cat <<\EOF >> /root/.bashrc
@@ -66,10 +62,6 @@ export PATH="$PATH:/root/.composer/vendor/bin"
 ## Change Dir to /opt
 cd /opt
 
-envtoset=`kick kick_to_env`
-## Evaluate and replace $PATH in envtoset
-eval envtoset_parsed="\"$envtoset\""
-export $envtoset_parsed
 EOF
 
 
