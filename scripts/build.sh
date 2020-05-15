@@ -39,7 +39,6 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export GIT_EDITOR=vim
-export PATH="/opt/bin:/home/user/.composer/vendor/bin:/opt/node_modules/.bin:$PATH"
 
 . /kickstart/flavorkit/scripts/select-console.sh default
 
